@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: config-client
+  profiles:
+    active: dev
+  cloud:
+    config:
+#      uri: http://localhost:8888/
+#      profile: dev # 可在运行时动态指定，默认为spring.profiles.active
+      label: master
+      discovery:
+        enabled: true
+        service-id: config-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+test:
+  username: bootstrap
+  local: 1

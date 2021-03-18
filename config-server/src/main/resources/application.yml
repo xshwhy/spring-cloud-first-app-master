@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+#        git:
+#          uri: https://github.com/fayfox/spring-cloud-config-repo.git
+#          username:
+#          password:
+#          clone-on-start: true
+        native:
+#          search-locations: classpath:/config # 这么引入后，修改配置文件后需要重启服务
+          search-locations: file:///F:\idea\spring-cloud-first-app\config-server\src\main\resources\config # 这种方式引入修改后不需要重启服务
+  profiles:
+    active: native # 要用本地配置文件的话，这个active必须是native
+server:
+  port: 8888
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+#logging:
+#  level:
+#    root: debug
